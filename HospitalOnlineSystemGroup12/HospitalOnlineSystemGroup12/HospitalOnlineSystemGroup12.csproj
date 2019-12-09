@@ -79,6 +79,7 @@
     <Content Include="App_Data\HospitalDB_log.ldf">
       <DependentUpon>HospitalDB.mdf</DependentUpon>
     </Content>
+    <Content Include="HomePage.aspx" />
     <Content Include="HospitalDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>HospitalDBModel.Context.cs</LastGenOutput>
@@ -89,6 +90,7 @@
       <DependentUpon>HospitalDBModel.edmx</DependentUpon>
       <LastGenOutput>HospitalDBModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +99,13 @@
     </Compile>
     <Compile Include="DoctorsTable.cs">
       <DependentUpon>HospitalDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HomePage.aspx.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HomePage.aspx.designer.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="HospitalDBModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -112,6 +121,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HospitalDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="MedicationListTable.cs">
       <DependentUpon>HospitalDBModel.tt</DependentUpon>
@@ -145,6 +161,7 @@
     <Content Include="HospitalDBModel.edmx.diagram">
       <DependentUpon>HospitalDBModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Dylan%27s Work\Web.config" />
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
     <None Include="Web.Debug.config">
@@ -155,7 +172,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Dylan%27s Work\" />
     <Folder Include="Joshua%27s Work\" />
     <Folder Include="Meagan%27s Work\" />
   </ItemGroup>

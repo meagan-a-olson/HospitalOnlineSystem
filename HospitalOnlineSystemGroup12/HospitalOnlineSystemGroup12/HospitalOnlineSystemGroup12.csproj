@@ -90,6 +90,7 @@
       <DependentUpon>HospitalDBModel.edmx</DependentUpon>
       <LastGenOutput>HospitalDBModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Joshua%27s Work\Appointments.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -121,6 +122,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HospitalDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Joshua%27s Work\Appointments.aspx.cs">
+      <DependentUpon>Appointments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Joshua%27s Work\Appointments.aspx.designer.cs">
+      <DependentUpon>Appointments.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -172,7 +180,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Joshua%27s Work\" />
     <Folder Include="Meagan%27s Work\" />
   </ItemGroup>
   <ItemGroup>

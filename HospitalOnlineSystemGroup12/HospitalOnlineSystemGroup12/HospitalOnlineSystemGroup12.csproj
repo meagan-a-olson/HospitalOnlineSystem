@@ -152,6 +152,7 @@
     <Compile Include="UsersTable.cs">
       <DependentUpon>HospitalDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UtilitiesClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="HospitalDBModel.edmx">

@@ -33,8 +33,8 @@ namespace HospitalOnlineSystemGroup12
                         Session["LoginName"] = user.UserLoginName;
                         Session["IsDoctor"] = user.UserIsDoctor;
                         Server.Transfer("HomePage.aspx", true);
-                    }
-                        
+                        break;
+                    }  
                 }
             }
         }

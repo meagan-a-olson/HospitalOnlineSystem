@@ -20,7 +20,7 @@ namespace HospitalOnlineSystemGroup12
                 List<PatientsTable> users = dbcon.PatientsTables.ToList();
                 foreach (PatientsTable patient in users)
                 {
-                    // Info transferred in from login in Context
+                    // Info transferred in from login in Session
                     if (Session["LoginName"].ToString().Equals(patient.UserLoginName))
                     {
                         myPatient.PatientID = patient.PatientID;
@@ -35,13 +35,14 @@ namespace HospitalOnlineSystemGroup12
                         myPatient.TestID = patient.TestID;
                     }
                 }
+                Session["PatientID"] = myPatient.PatientID;
             }
             else
             {
                 List<DoctorsTable> users = dbcon.DoctorsTables.ToList();
                 foreach (DoctorsTable doctor in users)
                 {
-                    // Info transferred in from login in Context
+                    // Info transferred in from login in Session
                     if (Session["LoginName"].ToString().Equals(doctor.UserLoginName))
                     {
                         myDoctor.DoctorID = doctor.DoctorID;
@@ -66,8 +67,10 @@ namespace HospitalOnlineSystemGroup12
             {
                 Label1.Text = myDoctor.FirstName + " " + myDoctor.LastName;
                 Label2.Visible = false;
+                HyperLink1.Visible = false;
             }
                 
         }
+
     }
 }

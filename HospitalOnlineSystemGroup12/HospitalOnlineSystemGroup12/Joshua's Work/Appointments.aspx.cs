@@ -105,7 +105,7 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
                 }
             }
         }
-
+        //
         protected void ShowAppointmentsDataGridView_SelectedIndexChanged(object sender, EventArgs e)
         {
 

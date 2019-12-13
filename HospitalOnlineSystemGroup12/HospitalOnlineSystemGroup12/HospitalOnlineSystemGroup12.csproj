@@ -79,6 +79,7 @@
     <Content Include="App_Data\HospitalDB_log.ldf">
       <DependentUpon>HospitalDB.mdf</DependentUpon>
     </Content>
+    <Content Include="MedAndTestsList.aspx" />
     <Content Include="HomePage.aspx" />
     <Content Include="HospitalDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -90,8 +91,8 @@
       <DependentUpon>HospitalDBModel.edmx</DependentUpon>
       <LastGenOutput>HospitalDBModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Joshua%27s Work\Appointments.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Meagan%27s Work\Messages.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +101,13 @@
     </Compile>
     <Compile Include="DoctorsTable.cs">
       <DependentUpon>HospitalDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MedAndTestsList.aspx.cs">
+      <DependentUpon>MedAndTestsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MedAndTestsList.aspx.designer.cs">
+      <DependentUpon>MedAndTestsList.aspx</DependentUpon>
     </Compile>
     <Compile Include="HomePage.aspx.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
@@ -123,19 +131,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HospitalDBModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Joshua%27s Work\Appointments.aspx.cs">
-      <DependentUpon>Appointments.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Joshua%27s Work\Appointments.aspx.designer.cs">
-      <DependentUpon>Appointments.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Meagan%27s Work\Messages.aspx.cs">
+      <DependentUpon>Messages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Meagan%27s Work\Messages.aspx.designer.cs">
+      <DependentUpon>Messages.aspx</DependentUpon>
     </Compile>
     <Compile Include="MedicationListTable.cs">
       <DependentUpon>HospitalDBModel.tt</DependentUpon>
@@ -160,6 +168,7 @@
     <Compile Include="UsersTable.cs">
       <DependentUpon>HospitalDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UtilitiesClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="HospitalDBModel.edmx">
@@ -180,7 +189,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Meagan%27s Work\" />
+    <Folder Include="Joshua%27s Work\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

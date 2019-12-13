@@ -14,7 +14,7 @@
     </asp:Login>
 </p>
 <p>
-    &nbsp;</p>
+</p>
 <p>
 </p>
 <p>

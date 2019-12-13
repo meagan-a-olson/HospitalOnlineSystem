@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\joshu\Source\Repos\meagan-a-olson\HospitalOnlineSystem\HospitalOnlineSystemGroup12\HospitalOnlineSystemGroup12\HospitalDBModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\code\NDSU\CSCI 213\GroupProject2\HospitalOnlineSystemGroup12\HospitalOnlineSystemGroup12\HospitalDBModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

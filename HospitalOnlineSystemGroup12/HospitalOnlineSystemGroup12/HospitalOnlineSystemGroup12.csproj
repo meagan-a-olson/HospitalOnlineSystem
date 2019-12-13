@@ -75,6 +75,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Appointments.aspx" />
     <Content Include="App_Data\HospitalDB.mdf" />
     <Content Include="App_Data\HospitalDB_log.ldf">
       <DependentUpon>HospitalDB.mdf</DependentUpon>
@@ -96,6 +97,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Appointments.aspx.cs">
+      <DependentUpon>Appointments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Appointments.aspx.designer.cs">
+      <DependentUpon>Appointments.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AppointmentsTable.cs">
       <DependentUpon>HospitalDBModel.tt</DependentUpon>
     </Compile>

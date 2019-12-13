@@ -29,9 +29,9 @@ namespace HospitalOnlineSystemGroup12
                 {
                     if (user.UserLoginPass.Trim().Equals(Login1.Password))
                     {
-                        // Transfers needed UserNameLogin and IsDoctor properties to Homepage
-                        Context.Items.Add("LoginName", user.UserLoginName);
-                        Context.Items.Add("IsDoctor", user.UserIsDoctor);
+                        // Stores UserLoginName and IsDoctor fields in Session variable
+                        Session["LoginName"] = user.UserLoginName;
+                        Session["IsDoctor"] = user.UserIsDoctor;
                         Server.Transfer("HomePage.aspx", true);
                     }
                         

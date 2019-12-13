@@ -15,13 +15,13 @@ namespace HospitalOnlineSystemGroup12
         protected void Page_Load(object sender, EventArgs e)
         {
             // Checks if user is patient or doctor, and creates object
-            if (Convert.ToInt32(Context.Items["IsDoctor"]) == 0)
+            if (Convert.ToInt32(Session["IsDoctor"]) == 0)
             {
                 List<PatientsTable> users = dbcon.PatientsTables.ToList();
                 foreach (PatientsTable patient in users)
                 {
-                    // Info transferred in from login in Context
-                    if (Context.Items["LoginName"].ToString().Equals(patient.UserLoginName))
+                    // Info transferred in from login in Session
+                    if (Session["LoginName"].ToString().Equals(patient.UserLoginName))
                     {
                         myPatient.PatientID = patient.PatientID;
                         myPatient.DoctorID = patient.DoctorID;
@@ -35,14 +35,15 @@ namespace HospitalOnlineSystemGroup12
                         myPatient.TestID = patient.TestID;
                     }
                 }
+                Session["PatientID"] = myPatient.PatientID;
             }
             else
             {
                 List<DoctorsTable> users = dbcon.DoctorsTables.ToList();
                 foreach (DoctorsTable doctor in users)
                 {
-                    // Info transferred in from login in Context
-                    if (Context.Items["LoginName"].ToString().Equals(doctor.UserLoginName))
+                    // Info transferred in from login in Session
+                    if (Session["LoginName"].ToString().Equals(doctor.UserLoginName))
                     {
                         myDoctor.DoctorID = doctor.DoctorID;
                         myDoctor.FirstName = doctor.FirstName;
@@ -57,7 +58,7 @@ namespace HospitalOnlineSystemGroup12
 
 
             // Page load depends on whether Patient or Doctor
-            if (Convert.ToInt32(Context.Items["IsDoctor"]) == 0)
+            if (Convert.ToInt32(Session["IsDoctor"]) == 0)
             {
                 Label1.Text = myPatient.FirstName + " " + myPatient.LastName;
                 Label2.Text = "Your Doctor is: ";
@@ -66,8 +67,10 @@ namespace HospitalOnlineSystemGroup12
             {
                 Label1.Text = myDoctor.FirstName + " " + myDoctor.LastName;
                 Label2.Visible = false;
+                HyperLink1.Visible = false;
             }
                 
         }
+
     }
 }

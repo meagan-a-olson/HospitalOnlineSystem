@@ -79,6 +79,7 @@
     <Content Include="App_Data\HospitalDB_log.ldf">
       <DependentUpon>HospitalDB.mdf</DependentUpon>
     </Content>
+    <Content Include="MedAndTestsList.aspx" />
     <Content Include="HomePage.aspx" />
     <Content Include="HospitalDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -100,6 +101,13 @@
     </Compile>
     <Compile Include="DoctorsTable.cs">
       <DependentUpon>HospitalDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MedAndTestsList.aspx.cs">
+      <DependentUpon>MedAndTestsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MedAndTestsList.aspx.designer.cs">
+      <DependentUpon>MedAndTestsList.aspx</DependentUpon>
     </Compile>
     <Compile Include="HomePage.aspx.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>

@@ -29,12 +29,12 @@ namespace HospitalOnlineSystemGroup12
                 {
                     if (user.UserLoginPass.Trim().Equals(Login1.Password))
                     {
-                        // Transfers needed UserNameLogin and IsDoctor properties to Homepage
+                        // Stores UserLoginName and IsDoctor fields in Session variable
                         Session["LoginName"] = user.UserLoginName;
                         Session["IsDoctor"] = user.UserIsDoctor;
                         Server.Transfer("HomePage.aspx", true);
-                        break;
-                    }  
+                    }
+                        
                 }
             }
         }

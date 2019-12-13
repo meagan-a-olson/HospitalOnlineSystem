@@ -54,6 +54,7 @@ namespace HospitalOnlineSystemGroup12
                         myDoctor.UserLoginName = doctor.UserLoginName;
                     }
                 }
+                Session["DoctorID"] = myDoctor.DoctorID;
             }
 
 
@@ -62,11 +63,14 @@ namespace HospitalOnlineSystemGroup12
             {
                 Label1.Text = myPatient.FirstName + " " + myPatient.LastName;
                 Label2.Text = "Your Doctor is: ";
+
+                HyperLink2.Visible = false;
             }
             else
             {
                 Label1.Text = myDoctor.FirstName + " " + myDoctor.LastName;
                 Label2.Visible = false;
+
                 HyperLink1.Visible = false;
             }
                 

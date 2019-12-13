@@ -33,6 +33,26 @@ namespace HospitalOnlineSystemGroup12
             return myPatient;
         }
 
+        public static DoctorsTable getPatientsDoctor(PatientsTable patient)
+        {
+            DoctorsTable doctor = new DoctorsTable();
+            foreach(DoctorsTable doc in dbcon.DoctorsTables)
+            {
+                if(doc.DoctorID == patient.DoctorID)
+                {
+                    doctor.FirstName = doc.FirstName;
+                    doctor.LastName = doc.LastName;
+                    doctor.UserLoginName = doc.UserLoginName;
+                    doctor.Email = doc.Email;
+                    doctor.DoctorID = doc.DoctorID;
+                    doctor.Location = doc.Location;
+                    doctor.Department = doc.Department;
+                    break;
+                }
+            }
+            return doctor;
+        }
+
         public static DoctorsTable getDoctor(string username)
         {
             DoctorsTable myDoctor = new DoctorsTable();

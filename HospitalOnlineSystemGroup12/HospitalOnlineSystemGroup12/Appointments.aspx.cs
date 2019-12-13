@@ -21,26 +21,13 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
             if (Convert.ToInt32(Session["IsDoctor"]) == 0)
             {
                 ShowDoctorAppointments.Visible = false;
-                List<PatientsTable> users = dbcon.PatientsTables.ToList();
-                foreach (PatientsTable patient in users)
-                {
-                    // Info transferred in from login in Context
-                    if (Session["LoginName"].ToString().Equals(patient.UserLoginName))
-                    {
-                        myPatient.PatientID = patient.PatientID;
-                        myPatient.DoctorID = patient.DoctorID;
-                        myPatient.FirstName = patient.FirstName;
-                        myPatient.LastName = patient.LastName;
-                        myPatient.Address = patient.Address;
-                        myPatient.Phone = patient.Phone;
-                        myPatient.Email = patient.Email;
-                        myPatient.UserLoginName = patient.UserLoginName;
-                        myPatient.MedicationID = patient.MedicationID;
-                        myPatient.TestID = patient.TestID;
-                    }
-                }
+                myPatient = UtilitiesClass.getPatient(Session["LoginName"].ToString());
 
                 Session["AppointmentPatientID"] = myPatient.PatientID;
+
+                DisplayNameLabel.Text = myPatient.FirstName + " " + myPatient.LastName;
+                myDoctor = UtilitiesClass.getPatientsDoctor(myPatient);
+                DisplayPatientsDoctorLabel.Text = "Your doctor is: " + myDoctor.FirstName + " " + myDoctor.LastName;
 
                 allAppointments = dbcon.AppointmentsTables.ToList();
                 foreach (AppointmentsTable appointment in allAppointments)
@@ -66,23 +53,11 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
             {
                 ShowDoctorAppointments.Visible = true;
                 ShowPatientAppointments.Visible = false;
-                List<DoctorsTable> doctorUsers = dbcon.DoctorsTables.ToList();
-                foreach (DoctorsTable doctor in doctorUsers)
-                {
-                    // Info transferred in from login in Context
-                    if (Session["LoginName"].ToString().Equals(doctor.UserLoginName))
-                    {
-                        myDoctor.DoctorID = doctor.DoctorID;
-                        myDoctor.FirstName = doctor.FirstName;
-                        myDoctor.LastName = doctor.LastName;
-                        myDoctor.Location = doctor.Location;
-                        myDoctor.Department = doctor.Department;
-                        myDoctor.Email = doctor.Email;
-                        myDoctor.UserLoginName = doctor.UserLoginName;
-                    }
-                }
 
-                Label1.Text = Session["LoginName"].ToString();
+                DoctorsTable myDoctor = UtilitiesClass.getDoctor(Session["LoginName"].ToString());
+
+                DisplayNameLabel.Text = myDoctor.FirstName + " " + myDoctor.LastName;
+
                 Session["AppointmentDoctorID"] = myDoctor.DoctorID;
 
                 allAppointments = dbcon.AppointmentsTables.ToList();
@@ -106,5 +81,17 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
             }
         }
 
+        protected void ShowAppointmentsDataGridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void DeletePatientAppointButton_Click(object sender, EventArgs e)
+        {
+            if (ShowDoctorAppointments.SelectedValue != null)
+            {
+                
+            }
+        }
     }
 }

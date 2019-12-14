@@ -4,10 +4,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <p>
         <br />
-        Select One to Search:<asp:RadioButtonList ID="RadioButtonList1" runat="server">
+        Select one to search:<asp:RadioButtonList ID="RadioButtonList1" runat="server" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
             <asp:ListItem>PatientID</asp:ListItem>
-            <asp:ListItem>Patient&#39;s Last Name</asp:ListItem>
             <asp:ListItem>Patient&#39;s First Name</asp:ListItem>
+            <asp:ListItem>Patient&#39;s Last Name</asp:ListItem>
         </asp:RadioButtonList>
     </p>
     <p>
@@ -15,12 +15,14 @@
         <asp:TextBox ID="TextBox1" runat="server" Width="141px"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Search" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Clear" Width="67px" />
     </p>
     <p>
-        &nbsp;</p>
-    <p>
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <asp:ListBox ID="ListBox1" runat="server" Height="131px" Width="707px"></asp:ListBox>
     </p>
+    <p>
+        &nbsp; List of all current Patients:</p>
     <p>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="PatientID" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="157px" Width="711px">
             <AlternatingRowStyle BackColor="White" />

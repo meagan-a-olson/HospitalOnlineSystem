@@ -11,7 +11,8 @@
         <asp:HyperLink ID="HyperLink1" runat="server" CssClass="auto-style1" NavigateUrl="~/MedAndTestsList.aspx">Medications/Tests</asp:HyperLink>
     </p>
 <p>
-        &nbsp;</p>
+        <asp:HyperLink ID="HyperLink2" runat="server" CssClass="auto-style1" NavigateUrl="~/PatientSearch.aspx">Search for Patient</asp:HyperLink>
+    </p>
     <p>
         Welcome,
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>

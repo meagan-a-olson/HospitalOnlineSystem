@@ -12,6 +12,7 @@ namespace HospitalOnlineSystemGroup12
         HospitalDBEntities dbcon = new HospitalDBEntities();
         PatientsTable myPatient = new PatientsTable();
         DoctorsTable myDoctor = new DoctorsTable();
+        bool flag = true;
         protected void Page_Load(object sender, EventArgs e)
         {
             myPatient = UtilitiesClass.getPatient(Session["LoginName"].ToString());
@@ -22,6 +23,7 @@ namespace HospitalOnlineSystemGroup12
 
         protected void CreateAppointmentButton_Click(object sender, EventArgs e)
         {
+            flag = true;
             AppointmentsTable newAppointment = new AppointmentsTable();
             newAppointment.PatientID = myPatient.PatientID;
             newAppointment.DoctorID = Convert.ToInt32(DoctorDropDownList.SelectedItem.Value);
@@ -41,14 +43,19 @@ namespace HospitalOnlineSystemGroup12
                     {
                         DisplayMesageLabel.Text = "An appointment already exists at this date and time.";
                         DisplayMesageLabel.Visible = true;
+                        flag = false;
                     }
                 }
             }
 
-            dbcon.AppointmentsTables.Add(newAppointment);
-            DisplayMesageLabel.Text = "Appointment Added.";
-            DisplayMesageLabel.Visible = true;
-            Server.Transfer("Appointments.aspx", true);
+            if (flag)
+            {
+                dbcon.AppointmentsTables.Add(newAppointment);
+                dbcon.SaveChanges();
+                DisplayMesageLabel.Text = "Appointment Added.";
+                DisplayMesageLabel.Visible = true;
+                Server.Transfer("Appointments.aspx", true);
+            }
         }
 
         protected void DepartmentDropDownList_SelectedIndexChanged(object sender, EventArgs e)

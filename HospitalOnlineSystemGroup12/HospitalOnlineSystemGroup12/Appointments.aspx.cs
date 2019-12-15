@@ -88,10 +88,7 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
 
         protected void DeletePatientAppointButton_Click(object sender, EventArgs e)
         {
-            if (ShowDoctorAppointments.SelectedValue != null)
-            {
-                
-            }
+            
         }
     }
 }

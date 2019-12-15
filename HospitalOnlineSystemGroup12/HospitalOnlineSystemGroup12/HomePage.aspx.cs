@@ -32,7 +32,6 @@ namespace HospitalOnlineSystemGroup12
 
                 Label1.Text = myDoctor.FirstName + " " + myDoctor.LastName;
                 Label2.Visible = false;
-                HyperLink1.Visible = false;
             }
 
                 

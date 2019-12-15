@@ -11,16 +11,16 @@ namespace HospitalOnlineSystemGroup12
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           if (Convert.ToInt32(Session["IsDoctor"]) == 0)
+            if (Convert.ToInt32(Session["IsDoctor"]) == 0)
             {
                 PatientsTable myPatient = UtilitiesClass.getPatient(Session["LoginName"].ToString());
                 DoctorsTable myDoctor = UtilitiesClass.getPatientsDoctor(myPatient);
 
                 HyperLink4.Text = "Medications/Tests";
                 HyperLink4.NavigateUrl = "~/MedAndTestsList.aspx";
-                Label1.Text = myPatient.FirstName + " " + myPatient.LastName + ".  Your Doctor is: " + myDoctor.FirstName + " " + myDoctor.LastName;
+                Label1.Text = myPatient.FirstName.Trim() + " " + myPatient.LastName.Trim() + ".  Your Doctor is: " + myDoctor.FirstName + " " + myDoctor.LastName;
             }
-            else
+            else if (Convert.ToInt32(Session["IsDoctor"]) == 1)
             {
                 DoctorsTable myDoctor = UtilitiesClass.getDoctor(Session["LoginName"].ToString());
 

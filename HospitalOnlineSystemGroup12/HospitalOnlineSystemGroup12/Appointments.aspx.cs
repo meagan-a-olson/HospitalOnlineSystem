@@ -48,6 +48,7 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
             }
             else
             {
+                HyperLink1.Visible = false;
                 ShowDoctorAppointments.Visible = true;
                 ShowPatientAppointments.Visible = false;
 

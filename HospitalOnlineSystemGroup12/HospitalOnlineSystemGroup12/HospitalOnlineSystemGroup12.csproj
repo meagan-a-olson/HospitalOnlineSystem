@@ -186,6 +186,13 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
+    <Compile Include="Site2.Master.cs">
+      <DependentUpon>Site2.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site2.Master.designer.cs">
+      <DependentUpon>Site2.Master</DependentUpon>
+    </Compile>
     <Compile Include="TestsTable.cs">
       <DependentUpon>HospitalDBModel.tt</DependentUpon>
     </Compile>
@@ -205,6 +212,7 @@
     <Content Include="Dylan%27s Work\Web.config" />
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
+    <Content Include="Site2.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

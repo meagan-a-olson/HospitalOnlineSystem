@@ -11,7 +11,23 @@ namespace HospitalOnlineSystemGroup12
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+           if (Convert.ToInt32(Session["IsDoctor"]) == 0)
+            {
+                PatientsTable myPatient = UtilitiesClass.getPatient(Session["LoginName"].ToString());
+                DoctorsTable myDoctor = UtilitiesClass.getPatientsDoctor(myPatient);
+
+                HyperLink4.Text = "Medications/Tests";
+                HyperLink4.NavigateUrl = "~/MedAndTestsList.aspx";
+                Label1.Text = myPatient.FirstName + " " + myPatient.LastName + ".  Your Doctor is: " + myDoctor.FirstName + " " + myDoctor.LastName;
+            }
+            else
+            {
+                DoctorsTable myDoctor = UtilitiesClass.getDoctor(Session["LoginName"].ToString());
+
+                HyperLink4.Text = "Search for Patient";
+                HyperLink4.NavigateUrl = "~/PatientSearch.aspx";
+                Label1.Text = myDoctor.FirstName + " " + myDoctor.LastName;
+            }
         }
     }
 }

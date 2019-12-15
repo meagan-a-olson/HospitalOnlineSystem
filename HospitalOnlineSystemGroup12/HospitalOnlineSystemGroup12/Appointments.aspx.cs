@@ -24,9 +24,7 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
                 myPatient = UtilitiesClass.getPatient(Session["LoginName"].ToString());
                 Session["AppointmentPatientID"] = myPatient.PatientID;
 
-                DisplayNameLabel.Text = myPatient.FirstName + " " + myPatient.LastName;
                 myDoctor = UtilitiesClass.getPatientsDoctor(myPatient);
-                DisplayPatientsDoctorLabel.Text = "Your doctor is: " + myDoctor.FirstName + " " + myDoctor.LastName;
 
                 allAppointments = dbcon.AppointmentsTables.ToList();
                 foreach (AppointmentsTable appointment in allAppointments)
@@ -54,8 +52,6 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
                 ShowPatientAppointments.Visible = false;
 
                 DoctorsTable myDoctor = UtilitiesClass.getDoctor(Session["LoginName"].ToString());
-
-                DisplayNameLabel.Text = myDoctor.FirstName + " " + myDoctor.LastName;
 
                 Session["AppointmentDoctorID"] = myDoctor.DoctorID;
 

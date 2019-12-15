@@ -15,10 +15,51 @@ namespace HospitalOnlineSystemGroup12
         protected void Page_Load(object sender, EventArgs e)
         {
             myPatient = UtilitiesClass.getPatient(Session["LoginName"].ToString());
-
             ShowUserNameLabel.Text = myPatient.FirstName + " " + myPatient.LastName;
             myDoctor = UtilitiesClass.getPatientsDoctor(myPatient);
             ShowPatientsDoctorLabel.Text = "Your doctor is: " + myDoctor.FirstName + " " + myDoctor.LastName;
+        }
+
+        protected void CreateAppointmentButton_Click(object sender, EventArgs e)
+        {
+            AppointmentsTable newAppointment = new AppointmentsTable();
+            newAppointment.PatientID = myPatient.PatientID;
+            newAppointment.DoctorID = Convert.ToInt32(DoctorDropDownList.SelectedItem.Value);
+            newAppointment.Date = Convert.ToDateTime(ShowSelectedDateLabel.Text);
+            int hour = Convert.ToInt32(HourDropDownList.SelectedValue);
+            int min = Convert.ToInt32(MinDropDownList.SelectedValue);
+            TimeSpan mytime = new TimeSpan(hour, min, 0);
+            newAppointment.Time = mytime;
+            newAppointment.Purpose = "";
+            newAppointment.VisitSummary = "";
+
+            foreach(AppointmentsTable appointment in dbcon.AppointmentsTables)
+            {
+                if(DateTime.Compare(appointment.Date, newAppointment.Date) == 0)
+                {
+                    if(TimeSpan.Compare(appointment.Time, newAppointment.Time) == 0)
+                    {
+                        DisplayMesageLabel.Text = "An appointment already exists at this date and time.";
+                        DisplayMesageLabel.Visible = true;
+                    }
+                }
+            }
+
+            dbcon.AppointmentsTables.Add(newAppointment);
+            DisplayMesageLabel.Text = "Appointment Added.";
+            DisplayMesageLabel.Visible = true;
+            Server.Transfer("Appointments.aspx", true);
+        }
+
+        protected void DepartmentDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void SelectDateCalendar_SelectionChanged(object sender, EventArgs e)
+        {
+            ShowSelectedDateLabel.Text = SelectDateCalendar.SelectedDate.ToString();
+            ShowSelectedDateLabel.Visible = true;
         }
     }
 }

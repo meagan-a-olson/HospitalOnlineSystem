@@ -9,7 +9,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Label ID="DisplayPatientsDoctorLabel" runat="server" Text="Label"></asp:Label>
     </p>
-    <p>
+<p>
         <br />
         <asp:Label ID="DisplayNoAppointMessage" runat="server" Text="Label"></asp:Label>
     </p>

@@ -6,7 +6,7 @@
     <br />
 </p>
 <p>
-    <asp:Login ID="Login1" runat="server" Height="381px" OnAuthenticate="Login1_Authenticate" Width="599px" BackColor="#E3EAEB" BorderColor="#E6E2D8" BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="Large" ForeColor="#333333">
+    <asp:Login ID="Login1" runat="server" Height="381px" OnAuthenticate="Login1_Authenticate" Width="575px" BackColor="#E3EAEB" BorderColor="#E6E2D8" BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="Large" ForeColor="#333333">
         <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
         <LoginButtonStyle BackColor="White" BorderColor="#C5BBAF" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#1C5E55" />
         <TextBoxStyle Font-Size="0.8em" />

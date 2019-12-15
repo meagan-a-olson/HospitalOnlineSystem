@@ -22,7 +22,6 @@ namespace HospitalOnlineSystemGroup12
 
                 Label1.Text = myPatient.FirstName + " " + myPatient.LastName;
                 myDoctor = UtilitiesClass.getPatientsDoctor(myPatient);
-                Label2.Text = "Your Doctor is: " + myDoctor.FirstName + " " + myDoctor.LastName;
                 GridView2.Visible = false;
             }
             else
@@ -31,7 +30,6 @@ namespace HospitalOnlineSystemGroup12
                 Session["DoctorID"] = myDoctor.DoctorID;
 
                 Label1.Text = myDoctor.FirstName + " " + myDoctor.LastName;
-                Label2.Visible = false;
                 GridView1.Visible = false;
             }
 

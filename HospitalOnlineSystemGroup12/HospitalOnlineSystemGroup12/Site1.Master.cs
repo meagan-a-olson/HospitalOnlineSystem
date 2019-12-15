@@ -18,7 +18,7 @@ namespace HospitalOnlineSystemGroup12
 
                 HyperLink4.Text = "Medications/Tests";
                 HyperLink4.NavigateUrl = "~/MedAndTestsList.aspx";
-                Label1.Text = myPatient.FirstName.Trim() + " " + myPatient.LastName.Trim() + ".  Your Doctor is: " + myDoctor.FirstName + " " + myDoctor.LastName;
+                Label1.Text = "Current Session: " + myPatient.FirstName.Trim() + " " + myPatient.LastName.Trim() + " - Your Doctor: " + myDoctor.FirstName + " " + myDoctor.LastName;
             }
             else if (Convert.ToInt32(Session["IsDoctor"]) == 1)
             {
@@ -26,7 +26,7 @@ namespace HospitalOnlineSystemGroup12
 
                 HyperLink4.Text = "Search for Patient";
                 HyperLink4.NavigateUrl = "~/PatientSearch.aspx";
-                Label1.Text = myDoctor.FirstName + " " + myDoctor.LastName;
+                Label1.Text = "Current Session:" + myDoctor.FirstName + " " + myDoctor.LastName;
             }
         }
     }

@@ -8,10 +8,7 @@
         Welcome,
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
-    </p>
-    <p>
-        &nbsp;</p>
+        </p>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="163px" Width="608px">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
@@ -64,4 +61,8 @@
             </SelectParameters>
         </asp:SqlDataSource>
     </p>
+    <p>
+        &nbsp;</p>
+    <p>
+        &nbsp;</p>
     </asp:Content>

@@ -95,6 +95,7 @@
     </Content>
     <Content Include="Login.aspx" />
     <Content Include="Meagan%27s Work\Messages.aspx" />
+    <Content Include="PatientSearch.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +167,13 @@
     </Compile>
     <Compile Include="MessagesTable.cs">
       <DependentUpon>HospitalDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientSearch.aspx.cs">
+      <DependentUpon>PatientSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatientSearch.aspx.designer.cs">
+      <DependentUpon>PatientSearch.aspx</DependentUpon>
     </Compile>
     <Compile Include="PatientsTable.cs">
       <DependentUpon>HospitalDBModel.tt</DependentUpon>

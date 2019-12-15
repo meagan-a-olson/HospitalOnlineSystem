@@ -3,6 +3,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <p>
+        &nbsp;<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/AddAppointment.aspx">Add Appointment</asp:HyperLink>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="DisplayNameLabel" runat="server" Text="Label"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="DisplayPatientsDoctorLabel" runat="server" Text="Label"></asp:Label>
+    </p>
+<p>
         <br />
         <asp:Label ID="DisplayNoAppointMessage" runat="server" Text="Label"></asp:Label>
     </p>
@@ -11,10 +18,10 @@
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:CommandField ShowSelectButton="True" />
-                <asp:BoundField DataField="Purpose" HeaderText="Purpose" SortExpression="Purpose" />
-                <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" />
-                <asp:BoundField DataField="Time" HeaderText="Time" SortExpression="Time" />
                 <asp:BoundField DataField="VisitSummary" HeaderText="VisitSummary" SortExpression="VisitSummary" />
+                <asp:BoundField DataField="Time" HeaderText="Time" SortExpression="Time" />
+                <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" />
+                <asp:BoundField DataField="Purpose" HeaderText="Purpose" SortExpression="Purpose" />
             </Columns>
             <EditRowStyle BackColor="#2461BF" />
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -35,7 +42,7 @@
         </asp:SqlDataSource>
     </p>
     <p>
-&nbsp;<asp:Button ID="DeletePatientAppointButton" runat="server" Text="Delete Appointment" Visible="False" />
+&nbsp;<asp:Button ID="DeletePatientAppointButton" runat="server" Text="Delete Appointment" Visible="False" OnClick="DeletePatientAppointButton_Click" />
     </p>
     <p>
         &nbsp;</p>
@@ -46,8 +53,8 @@
                 <asp:CommandField ShowSelectButton="True" />
                 <asp:BoundField DataField="Purpose" HeaderText="Purpose" SortExpression="Purpose" />
                 <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" />
-                <asp:BoundField DataField="Time" HeaderText="Time" SortExpression="Time" />
                 <asp:BoundField DataField="VisitSummary" HeaderText="VisitSummary" SortExpression="VisitSummary" />
+                <asp:BoundField DataField="Time" HeaderText="Time" SortExpression="Time" />
             </Columns>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -59,8 +66,7 @@
             <SortedDescendingCellStyle BackColor="#FCF6C0" />
             <SortedDescendingHeaderStyle BackColor="#820000" />
         </asp:GridView>
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Purpose], [Date], [Time], [VisitSummary] FROM [AppointmentsTable] WHERE ([DoctorID] = @DoctorID)">
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Purpose], [Date], [VisitSummary], [Time] FROM [AppointmentsTable] WHERE ([DoctorID] = @DoctorID)">
             <SelectParameters>
                 <asp:SessionParameter Name="DoctorID" SessionField="AppointmentDoctorID" Type="Int32" />
             </SelectParameters>

@@ -9,8 +9,8 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    Hospital Online System
     <form id="form1" runat="server">
+    Hospital Online System
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>

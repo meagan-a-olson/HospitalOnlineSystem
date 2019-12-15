@@ -4,15 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 
-namespace HospitalOnlineSystemGroup12 {
-    public static class UtilitiesClass {
+namespace HospitalOnlineSystemGroup12
+{
+    public static class UtilitiesClass
+    {
         private static HospitalDBEntities dbcon = new HospitalDBEntities();
 
-        public static PatientsTable getPatient(string username) {
-            PatientsTable myPatient = null;
-            foreach(PatientsTable patient in dbcon.PatientsTables) {
-                if (patient.UserLoginName.ToString() == username) {
-                    myPatient = new PatientsTable();
+        public static PatientsTable getPatient(string username)
+        {
+            PatientsTable myPatient = new PatientsTable();
+            foreach(PatientsTable patient in dbcon.PatientsTables)
+            {
+                if (patient.UserLoginName.ToString() == username)
+                {
                     myPatient.PatientID = patient.PatientID;
                     myPatient.DoctorID = patient.DoctorID;
                     myPatient.FirstName = patient.FirstName;
@@ -29,11 +33,33 @@ namespace HospitalOnlineSystemGroup12 {
             return myPatient;
         }
 
-        public static DoctorsTable getDoctor(string username) {
-            DoctorsTable myDoctor = null;
-            foreach (DoctorsTable doctor in dbcon.DoctorsTables) {
-                if (doctor.UserLoginName.ToString() == username) {
-                    myDoctor = new DoctorsTable();
+        public static DoctorsTable getPatientsDoctor(PatientsTable patient)
+        {
+            DoctorsTable doctor = new DoctorsTable();
+            foreach(DoctorsTable doc in dbcon.DoctorsTables)
+            {
+                if(doc.DoctorID == patient.DoctorID)
+                {
+                    doctor.FirstName = doc.FirstName;
+                    doctor.LastName = doc.LastName;
+                    doctor.UserLoginName = doc.UserLoginName;
+                    doctor.Email = doc.Email;
+                    doctor.DoctorID = doc.DoctorID;
+                    doctor.Location = doc.Location;
+                    doctor.Department = doc.Department;
+                    break;
+                }
+            }
+            return doctor;
+        }
+
+        public static DoctorsTable getDoctor(string username)
+        {
+            DoctorsTable myDoctor = new DoctorsTable();
+            foreach (DoctorsTable doctor in dbcon.DoctorsTables)
+            {
+                if (doctor.UserLoginName.ToString() == username)
+                {
                     myDoctor.DoctorID = doctor.DoctorID;
                     myDoctor.FirstName = doctor.FirstName;
                     myDoctor.LastName = doctor.LastName;

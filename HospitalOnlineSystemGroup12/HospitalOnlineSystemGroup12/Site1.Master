@@ -7,24 +7,43 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            font-size: x-large;
+        }
+        .auto-style2 {
+            color: #006600;
+        }
+        .auto-style3 {
+            font-size: small;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-    Hospital Online System&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="auto-style1"><span class="auto-style2"><strong>Hospital Online System</strong></span>&nbsp;</span>&nbsp;&nbsp;&nbsp;
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/HomePage.aspx">Home</asp:HyperLink>
-&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp; &nbsp;
         <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Appointments.aspx">Appointments</asp:HyperLink>
-&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
         <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Meagan's Work/Messages.aspx">Messages</asp:HyperLink>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:HyperLink ID="HyperLink4" runat="server">HyperLink</asp:HyperLink>
-&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;<asp:HyperLink ID="HyperLink4" runat="server">HyperLink</asp:HyperLink>
+        &nbsp;&nbsp;
+        <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Login.aspx">Logout</asp:HyperLink>
+&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-&nbsp;<div>
+&nbsp;&nbsp;&nbsp; <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <p>
+                    <br />
+                </p>
+                <p>
+                </p>
             </asp:ContentPlaceHolder>
         </div>
     </form>
+    <span class="auto-style3">Created by
     Group 12: Dylan Martie, Joshua Molden, and Meagan Olson
+</span>
 </body>
 </html>

@@ -22,7 +22,6 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
             {
                 ShowDoctorAppointments.Visible = false;
                 myPatient = UtilitiesClass.getPatient(Session["LoginName"].ToString());
-
                 Session["AppointmentPatientID"] = myPatient.PatientID;
 
                 DisplayNameLabel.Text = myPatient.FirstName + " " + myPatient.LastName;

@@ -72,5 +72,25 @@ namespace HospitalOnlineSystemGroup12
             }
             return myDoctor;
         }
+
+        public static AppointmentsTable createAppointment(int appointmentID)
+        {
+            AppointmentsTable deleteAppointment = new AppointmentsTable();
+            foreach (AppointmentsTable appointment in dbcon.AppointmentsTables)
+            {
+                if (appointment.AppointmentID == appointmentID)
+                {
+                    deleteAppointment.AppointmentID = appointment.AppointmentID;
+                    deleteAppointment.PatientID = appointment.PatientID;
+                    deleteAppointment.DoctorID = appointment.DoctorID;
+                    deleteAppointment.Date = appointment.Date;
+                    deleteAppointment.Time = appointment.Time;
+                    deleteAppointment.Purpose = appointment.Purpose;
+                    deleteAppointment.VisitSummary = appointment.VisitSummary;
+                    break;
+                }
+            }
+            return deleteAppointment;
+        }
     }
 }

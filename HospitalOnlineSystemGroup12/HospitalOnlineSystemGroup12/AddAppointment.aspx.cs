@@ -16,9 +16,6 @@ namespace HospitalOnlineSystemGroup12
         protected void Page_Load(object sender, EventArgs e)
         {
             myPatient = UtilitiesClass.getPatient(Session["LoginName"].ToString());
-            ShowUserNameLabel.Text = myPatient.FirstName + " " + myPatient.LastName;
-            myDoctor = UtilitiesClass.getPatientsDoctor(myPatient);
-            ShowPatientsDoctorLabel.Text = "Your doctor is: " + myDoctor.FirstName + " " + myDoctor.LastName;
         }
 
         protected void CreateAppointmentButton_Click(object sender, EventArgs e)

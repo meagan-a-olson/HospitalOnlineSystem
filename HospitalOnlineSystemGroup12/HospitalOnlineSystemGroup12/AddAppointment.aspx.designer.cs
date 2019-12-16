@@ -15,24 +15,6 @@ namespace HospitalOnlineSystemGroup12
     {
 
         /// <summary>
-        /// ShowUserNameLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ShowUserNameLabel;
-
-        /// <summary>
-        /// ShowPatientsDoctorLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ShowPatientsDoctorLabel;
-
-        /// <summary>
         /// DepartmentNameLabel control.
         /// </summary>
         /// <remarks>

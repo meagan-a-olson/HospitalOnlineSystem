@@ -39,7 +39,9 @@ namespace HospitalOnlineSystemGroup12.Meagan_s_Work
                 }
             }
             InboxGridView.DataSource = inbox;
+            InboxGridView.DataBind();
             SentGridView.DataSource = sent;
+            SentGridView.DataBind();
         }
 
         //Function run at page load to populate recipients drop down list with patients or doctors

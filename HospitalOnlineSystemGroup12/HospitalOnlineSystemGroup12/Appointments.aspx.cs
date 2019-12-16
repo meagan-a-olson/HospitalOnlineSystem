@@ -123,7 +123,7 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
                     }
                 }
                 dbcon.SaveChanges();
-                ShowPatientAppointments.DataBind();
+                ShowDoctorAppointments.DataBind();
                 if (ShowDoctorAppointments.Rows.Count == 0)
                 {
                     DisplayNoAppointMessage.Text = "You have no appointments set up.";

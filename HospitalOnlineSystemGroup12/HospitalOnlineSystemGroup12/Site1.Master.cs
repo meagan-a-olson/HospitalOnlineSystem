@@ -26,7 +26,7 @@ namespace HospitalOnlineSystemGroup12
 
                 HyperLink4.Text = "Search for Patient";
                 HyperLink4.NavigateUrl = "~/PatientSearch.aspx";
-                Label1.Text = "Current Session:" + myDoctor.FirstName + " " + myDoctor.LastName;
+                Label1.Text = "Current Session: " + myDoctor.FirstName + " " + myDoctor.LastName;
             }
         }
     }

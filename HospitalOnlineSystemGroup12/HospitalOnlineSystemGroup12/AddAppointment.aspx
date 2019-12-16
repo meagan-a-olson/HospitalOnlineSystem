@@ -32,6 +32,9 @@
     <p>
         <asp:Label ID="SelectDateLabel" runat="server" Text="Select Date Bellow"></asp:Label>
 </p>
+    <p>
+        <asp:Label ID="ShowSelectedDateLabel" runat="server" Text="Label"></asp:Label>
+</p>
 <p>
     <asp:Calendar ID="SelectDateCalendar" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" OnSelectionChanged="SelectDateCalendar_SelectionChanged" Width="350px">
         <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />

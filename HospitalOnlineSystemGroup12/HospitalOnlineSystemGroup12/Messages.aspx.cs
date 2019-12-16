@@ -17,9 +17,9 @@ namespace HospitalOnlineSystemGroup12.Meagan_s_Work
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            SendButton.Visible = false;
             loadMessages(Session["LoginName"].ToString());
-            loadRecipients(Convert.ToInt32(Session["IsDoctor"]) == 1);
+            ViewMessageTextBox.Visible = false;
+            InstructionsLabel.Visible = false;
         }
 
         //Function to clear and reload Inbox and Sent GridViews
@@ -38,44 +38,44 @@ namespace HospitalOnlineSystemGroup12.Meagan_s_Work
                     this.sent.Add(new CustomMessage(m));
                 }
             }
+
             InboxGridView.DataSource = inbox;
+            InboxGridView.DataKeyNames = new string[1] { "MessageID" };
             InboxGridView.DataBind();
             SentGridView.DataSource = sent;
+            SentGridView.DataKeyNames = new string[1] { "MessageID" };
             SentGridView.DataBind();
         }
 
-        //Function run at page load to populate recipients drop down list with patients or doctors
-        private void loadRecipients(bool isDoctor)
+        public void ViewMessage(int messageID)
         {
-            Dictionary<string, string> recipients = new Dictionary<string, string>();
-            if (isDoctor)
+            MessagesTable mTable = UtilitiesClass.getMessageByID(messageID);
+            CustomMessage mCustom = new CustomMessage(mTable);
+            ViewMessageTextBox.Visible = true;
+            ViewMessageTextBox.Text = $"From: {mCustom.From}\nTo: {mCustom.To}\nDate: {mTable.Date}\n\n{mTable.Message}";
+            if (mTable.MessageTO.Trim().Equals(Session["LoginName"].ToString().Trim()) && mTable.IsRead == 0)
             {
-                foreach (PatientsTable x in dbcon.PatientsTables)
+                foreach(MessagesTable m in dbcon.MessagesTables)
                 {
-                    recipients.Add($"{x.FirstName} {x.LastName}", x.UserLoginName);
+                    if (m.MessageID == messageID)
+                    {
+                        m.IsRead = 1;
+                    }
                 }
+                dbcon.SaveChanges();
+                loadMessages(Session["LoginName"].ToString());
             }
-            else
-            {
-                foreach (DoctorsTable x in dbcon.DoctorsTables)
-                {
-                    recipients.Add($"{x.FirstName} {x.LastName}", x.UserLoginName);
-                }
-            }
-            RecipientsDropDownList.DataSource = recipients;
-            RecipientsDropDownList.DataTextField = "Value";
-            RecipientsDropDownList.DataValueField = "Key";
-            RecipientsDropDownList.DataBind();
         }
 
         //Class to display MessageTable info in a user-friendly way
         protected class CustomMessage
         {
-            protected string From;
-            protected string To;
-            protected System.DateTime Date;
-            protected string MessagePreview;
-            protected string Read;
+            private string _from;
+            private string _to;
+            private System.DateTime _date;
+            private string _messagePreview;
+            private string _read;
+            private int _messageID;
 
             public CustomMessage(MessagesTable m)
             {
@@ -83,44 +83,170 @@ namespace HospitalOnlineSystemGroup12.Meagan_s_Work
                 {
                     PatientsTable messageTo = UtilitiesClass.getPatient(m.MessageTO);
                     DoctorsTable messageFrom = UtilitiesClass.getDoctor(m.MessageFROM);
-                    this.From = $"{messageTo.FirstName} {messageTo.LastName}";
-                    this.To = $"{messageTo.FirstName} {messageTo.LastName}";
+                    this.From = $"{messageFrom.FirstName.Trim()} {messageFrom.LastName.Trim()}";
+                    this.To = $"{messageTo.FirstName.Trim()} {messageTo.LastName.Trim()}";
                 }
                 else
                 {
                     DoctorsTable messageTo = UtilitiesClass.getDoctor(m.MessageTO);
                     PatientsTable messageFrom = UtilitiesClass.getPatient(m.MessageFROM);
-                    this.From = $"{messageTo.FirstName} {messageTo.LastName}";
-                    this.To = $"{messageTo.FirstName} {messageTo.LastName}";
+                    this.From = $"{messageFrom.FirstName.Trim()} {messageFrom.LastName.Trim()}";
+                    this.To = $"{messageTo.FirstName.Trim()} {messageTo.LastName.Trim()}";
                 }
                 this.Date = m.Date;
-                this.MessagePreview = $"{Regex.Replace(m.Message.Remove(10), @"\s+", " ")}...";
+                this.MessagePreview = Regex.Replace(m.Message.Remove(40), @"\s+", " ");
+                //CHECK
+                if (m.Message.Length > 40)
+                {
+                    this.MessagePreview += "...";
+                }
                 this.Read = Convert.ToInt32(m.IsRead) == 0 ? "Unread" : "";
+                this.MessageID = m.MessageID;
+            }
+
+            public string From
+            {
+                get
+                {
+                    return _from;
+                }
+                set
+                {
+                    this._from = value;
+                }
+            }
+            public string To 
+            {
+                get
+                {
+                    return _to;
+                }
+                set
+                {
+                    this._to = value;
+                }
+            }
+            public System.DateTime Date 
+            {
+                get
+                {
+                    return _date;
+                }
+                set
+                {
+                    this._date = value;
+                }
+            }
+            public string MessagePreview 
+            {
+                get
+                {
+                    return _messagePreview;
+                }
+                set
+                {
+                    this._messagePreview = value;
+                }
+            }
+            public string Read 
+            {
+                get
+                {
+                    return _read;
+                }
+                set
+                {
+                    this._read = value;
+                }
+            }
+            public int MessageID
+            {
+                get
+                {
+                    return _messageID;
+                }
+                set
+                {
+                    _messageID = value;
+                }
+            }
+
+        }
+
+        protected void ViewMessageButton_Click(object sender, EventArgs e)
+        {
+            InstructionsLabel.Visible = false;
+            if (!ValidateSelectedMessage()) {
+                if (InboxGridView.SelectedRow == null && SentGridView.SelectedRow == null)
+                {
+                    DisplayInstructions("Please select a message to view.");
+                } 
+                else if (InboxGridView.SelectedRow != null && SentGridView.SelectedRow != null)
+                {
+                    DisplayInstructions("Please select only one message to view.");
+                    ClearGridViewSelect();
+                }
+            }
+            else
+            {
+                int messageID = Convert.ToInt32(InboxGridView.SelectedRow == null ? SentGridView.SelectedDataKey.Value : InboxGridView.SelectedDataKey.Value);
+                ViewMessage(messageID);
+                ClearGridViewSelect();
             }
         }
 
-        protected void SendButton_Click(object sender, EventArgs e)
+        //Returns true if the user has selected only one message from the Inbox and Sent gridviews; false if none are selected or more than one are selected
+        private bool ValidateSelectedMessage()
         {
-            //create new MessagesTable object
-            MessagesTable newMessage = new MessagesTable();
-            newMessage.MessageFROM = Session["LoginName"].ToString();
-            newMessage.MessageTO = RecipientsDropDownList.SelectedValue;
-            newMessage.Date = new DateTime();
-            newMessage.Message = MessageListBox.Text;
-
-            //update database
-            dbcon.MessagesTables.Add(newMessage);
-            dbcon.SaveChanges();
-
-            //clear fields and reload tables
-            RecipientsDropDownList.ClearSelection();
-            MessageListBox.Text = "";
-            loadMessages(Session["LoginName"].ToString());
+            return (InboxGridView.SelectedRow == null ^ SentGridView.SelectedRow == null);
         }
 
-        protected void RecipientsDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        private void ClearGridViewSelect()
         {
-            SendButton.Visible = true;
+            InboxGridView.SelectedIndex = -1;
+            SentGridView.SelectedIndex = -1;
+        }
+
+        private void DisplayInstructions(string message)
+        {
+            InstructionsLabel.Text = message;
+            InstructionsLabel.Visible = true;
+            InstructionsLabel.ForeColor = System.Drawing.Color.Red;
+        }
+
+        protected void DeleteMessageButton_Click(object sender, EventArgs e)
+        {
+            InstructionsLabel.Visible = false;
+            if (!ValidateSelectedMessage())
+            {
+                if (InboxGridView.SelectedRow == null && SentGridView.SelectedRow == null)
+                {
+                    DisplayInstructions("Please select a message to delete.");
+                }
+                else if (InboxGridView.SelectedRow != null && SentGridView.SelectedRow != null)
+                {
+                    DisplayInstructions("Please select only one message to delete.");
+                    ClearGridViewSelect();
+                }
+            }
+            else
+            {
+                int messageID = Convert.ToInt32(InboxGridView.SelectedRow == null ? SentGridView.SelectedDataKey.Value : InboxGridView.SelectedDataKey.Value);
+                foreach (MessagesTable m in dbcon.MessagesTables)
+                {
+                    if (m.MessageID == messageID)
+                    {
+                        dbcon.MessagesTables.Remove(m);
+                    }
+                }
+                dbcon.SaveChanges();
+                loadMessages(Session["LoginName"].ToString());
+            }
+        }
+
+        protected void NewMessageButton_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("NewMessage.aspx", true);
         }
     }
 }

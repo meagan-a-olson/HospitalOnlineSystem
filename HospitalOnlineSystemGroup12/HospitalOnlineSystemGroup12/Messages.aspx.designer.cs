@@ -33,39 +33,48 @@ namespace HospitalOnlineSystemGroup12.Meagan_s_Work
         protected global::System.Web.UI.WebControls.GridView SentGridView;
 
         /// <summary>
-        /// RecipientsDropDownList control.
+        /// ViewMessageButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList RecipientsDropDownList;
+        protected global::System.Web.UI.WebControls.Button ViewMessageButton;
 
         /// <summary>
-        /// MessageLabel control.
+        /// DeleteMessageButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MessageLabel;
+        protected global::System.Web.UI.WebControls.Button DeleteMessageButton;
 
         /// <summary>
-        /// MessageListBox control.
+        /// NewMessageButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox MessageListBox;
+        protected global::System.Web.UI.WebControls.Button NewMessageButton;
 
         /// <summary>
-        /// SendButton control.
+        /// InstructionsLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SendButton;
+        protected global::System.Web.UI.WebControls.Label InstructionsLabel;
+
+        /// <summary>
+        /// ViewMessageTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ViewMessageTextBox;
     }
 }

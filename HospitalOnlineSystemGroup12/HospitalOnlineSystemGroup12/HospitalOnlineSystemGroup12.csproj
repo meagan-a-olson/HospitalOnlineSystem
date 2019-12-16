@@ -95,6 +95,7 @@
     </Content>
     <Content Include="Login.aspx" />
     <Content Include="Messages.aspx" />
+    <Content Include="NewMessage.aspx" />
     <Content Include="PatientSearch.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -168,6 +169,13 @@
     <Compile Include="MessagesTable.cs">
       <DependentUpon>HospitalDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="NewMessage.aspx.cs">
+      <DependentUpon>NewMessage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewMessage.aspx.designer.cs">
+      <DependentUpon>NewMessage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PatientSearch.aspx.cs">
       <DependentUpon>PatientSearch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -222,7 +230,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Joshua%27s Work\" />
-    <Folder Include="Meagan%27s Work\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

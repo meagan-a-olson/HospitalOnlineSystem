@@ -104,6 +104,10 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
                     DisplayNoAppointMessage.Text = "You have no appointments set up.";
                     DisplayNoAppointMessage.Visible = true;
                 }
+                else
+                {
+
+                }
             }
         }
 
@@ -129,6 +133,10 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
                     DisplayNoAppointMessage.Text = "You have no appointments set up.";
                     DisplayNoAppointMessage.Visible = true;
                 }
+            }
+            else
+            {
+
             }
         }
     }

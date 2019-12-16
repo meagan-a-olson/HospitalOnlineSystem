@@ -26,7 +26,7 @@
         &nbsp; &nbsp;
         <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Appointments.aspx">Appointments</asp:HyperLink>
         &nbsp;&nbsp;&nbsp;
-        <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Meagan's Work/Messages.aspx">Messages</asp:HyperLink>
+        <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Messages.aspx">Messages</asp:HyperLink>
         &nbsp;&nbsp;&nbsp;<asp:HyperLink ID="HyperLink4" runat="server">HyperLink</asp:HyperLink>
         &nbsp;&nbsp;
         <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Login.aspx">Logout</asp:HyperLink>

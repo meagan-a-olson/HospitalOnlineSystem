@@ -15,6 +15,15 @@ namespace HospitalOnlineSystemGroup12.Meagan_s_Work
     {
 
         /// <summary>
+        /// EmptyInboxLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label EmptyInboxLabel;
+
+        /// <summary>
         /// InboxGridView control.
         /// </summary>
         /// <remarks>
@@ -22,6 +31,15 @@ namespace HospitalOnlineSystemGroup12.Meagan_s_Work
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView InboxGridView;
+
+        /// <summary>
+        /// EmptySentLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label EmptySentLabel;
 
         /// <summary>
         /// SentGridView control.

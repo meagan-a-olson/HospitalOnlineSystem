@@ -16,6 +16,10 @@ namespace HospitalOnlineSystemGroup12
         protected void Page_Load(object sender, EventArgs e)
         {
             myPatient = UtilitiesClass.getPatient(Session["LoginName"].ToString());
+            if (!IsPostBack)
+            {
+                ShowSelectedDateLabel.Visible = false;
+            }
         }
 
         protected void CreateAppointmentButton_Click(object sender, EventArgs e)
@@ -53,11 +57,6 @@ namespace HospitalOnlineSystemGroup12
                 DisplayMesageLabel.Visible = true;
                 Server.Transfer("Appointments.aspx", true);
             }
-        }
-
-        protected void DepartmentDropDownList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         protected void SelectDateCalendar_SelectionChanged(object sender, EventArgs e)

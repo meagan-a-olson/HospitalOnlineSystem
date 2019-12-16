@@ -17,7 +17,10 @@ namespace HospitalOnlineSystemGroup12.Meagan_s_Work
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            loadMessages(Session["LoginName"].ToString());
+            if(!IsPostBack)
+            {
+                loadMessages(Session["LoginName"].ToString());
+            }
             ViewMessageTextBox.Visible = false;
             InstructionsLabel.Visible = false;
         }
@@ -25,6 +28,7 @@ namespace HospitalOnlineSystemGroup12.Meagan_s_Work
         //Function to clear and reload Inbox and Sent GridViews
         private void loadMessages(string username)
         {
+            //Clear gridboxes and add messages to lists
             this.inbox.Clear();
             this.sent.Clear();
             foreach (MessagesTable m in dbcon.MessagesTables)
@@ -39,14 +43,37 @@ namespace HospitalOnlineSystemGroup12.Meagan_s_Work
                 }
             }
 
+            //Set data sources and keys
             InboxGridView.DataSource = inbox;
             InboxGridView.DataKeyNames = new string[1] { "MessageID" };
             InboxGridView.DataBind();
             SentGridView.DataSource = sent;
             SentGridView.DataKeyNames = new string[1] { "MessageID" };
             SentGridView.DataBind();
+
+            //handle empty message labels
+            string emptyMessage = "You have no messages to display.";
+            if(InboxGridView.Rows.Count == 0)
+            {
+                EmptyInboxLabel.Visible = true;
+                EmptyInboxLabel.Text = emptyMessage;
+            }
+            else
+            {
+                EmptyInboxLabel.Visible = false;
+            }
+            if (SentGridView.Rows.Count == 0)
+            {
+                EmptySentLabel.Visible = true;
+                EmptySentLabel.Text = emptyMessage;
+            }
+            else
+            {
+                EmptySentLabel.Visible = false;
+            }
         }
 
+        //Sends the given message's info to the ViewMessageTextBox
         public void ViewMessage(int messageID)
         {
             MessagesTable mTable = UtilitiesClass.getMessageByID(messageID);

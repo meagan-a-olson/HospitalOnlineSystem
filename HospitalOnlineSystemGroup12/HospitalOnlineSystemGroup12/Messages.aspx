@@ -14,6 +14,9 @@
     <h2 class="auto-style2">My Messages</h2>
     <h3 class="auto-style4">
         <strong>Inbox</strong></h3>
+    <p class="auto-style4">
+        <asp:Label ID="EmptyInboxLabel" runat="server" Text="Label"></asp:Label>
+    </p>
     <p>
         <asp:GridView ID="InboxGridView" runat="server" Width="1100px" AutoGenerateColumns="False" AutoGenerateSelectButton="True" CellPadding="4" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" />
@@ -39,6 +42,9 @@
         &nbsp;</p>
     <h3 class="auto-style2">
         Sent</h3>
+    <p class="auto-style2">
+        <asp:Label ID="EmptySentLabel" runat="server" Text="Label"></asp:Label>
+    </p>
     <p>
         <asp:GridView ID="SentGridView" runat="server" Width="1100px" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateSelectButton="True">
             <AlternatingRowStyle BackColor="White" />

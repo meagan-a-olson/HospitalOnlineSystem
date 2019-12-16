@@ -12,11 +12,13 @@ namespace HospitalOnlineSystemGroup12
 
         public static PatientsTable getPatient(string username)
         {
-            PatientsTable myPatient = new PatientsTable();
+            PatientsTable myPatient = null;
+            username = username.Trim();
             foreach(PatientsTable patient in dbcon.PatientsTables)
             {
-                if (patient.UserLoginName.ToString() == username)
+                if (patient.UserLoginName.ToString().Trim() == username)
                 {
+                    myPatient = new PatientsTable();
                     myPatient.PatientID = patient.PatientID;
                     myPatient.DoctorID = patient.DoctorID;
                     myPatient.FirstName = patient.FirstName;
@@ -35,11 +37,12 @@ namespace HospitalOnlineSystemGroup12
 
         public static DoctorsTable getPatientsDoctor(PatientsTable patient)
         {
-            DoctorsTable doctor = new DoctorsTable();
+            DoctorsTable doctor = null;
             foreach(DoctorsTable doc in dbcon.DoctorsTables)
             {
                 if(doc.DoctorID == patient.DoctorID)
                 {
+                    doctor = new DoctorsTable();
                     doctor.FirstName = doc.FirstName;
                     doctor.LastName = doc.LastName;
                     doctor.UserLoginName = doc.UserLoginName;
@@ -55,11 +58,13 @@ namespace HospitalOnlineSystemGroup12
 
         public static DoctorsTable getDoctor(string username)
         {
-            DoctorsTable myDoctor = new DoctorsTable();
+            DoctorsTable myDoctor = null;
+            username = username.Trim();
             foreach (DoctorsTable doctor in dbcon.DoctorsTables)
             {
-                if (doctor.UserLoginName.ToString() == username)
+                if (doctor.UserLoginName.ToString().Trim() == username)
                 {
+                    myDoctor = new DoctorsTable();
                     myDoctor.DoctorID = doctor.DoctorID;
                     myDoctor.FirstName = doctor.FirstName;
                     myDoctor.LastName = doctor.LastName;
@@ -91,6 +96,26 @@ namespace HospitalOnlineSystemGroup12
                 }
             }
             return deleteAppointment;
+        }
+
+        public static MessagesTable getMessageByID(int messageID)
+        {
+            MessagesTable result = null;
+            foreach (MessagesTable m in dbcon.MessagesTables)
+            {
+                if (m.MessageID == messageID)
+                {
+                    result = new MessagesTable();
+                    result.MessageID = m.MessageID;
+                    result.MessageTO = m.MessageTO;
+                    result.MessageFROM = m.MessageFROM;
+                    result.Date = m.Date;
+                    result.Message = m.Message;
+                    result.IsRead = m.IsRead;
+                    break;
+                }
+            }
+            return result;
         }
     }
 }

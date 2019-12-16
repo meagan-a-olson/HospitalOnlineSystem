@@ -12,7 +12,7 @@
         <asp:Label ID="DisplayNoAppointMessage" runat="server" Text="Label"></asp:Label>
     </p>
     <p>
-        <asp:GridView ID="ShowPatientAppointments" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="ShowAppointmentsDataGridView_SelectedIndexChanged" DataKeyNames="AppointmentID">
+        <asp:GridView ID="ShowPatientAppointments" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" DataKeyNames="AppointmentID">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:CommandField ShowSelectButton="True" />

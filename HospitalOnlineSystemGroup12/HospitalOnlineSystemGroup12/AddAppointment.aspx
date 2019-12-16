@@ -12,7 +12,7 @@
     </p>
 <p>
     <asp:Label ID="DepartmentNameLabel" runat="server" Text="Department: "></asp:Label>
-    <asp:DropDownList ID="DepartmentDropDownList" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="Department" DataValueField="Department" OnSelectedIndexChanged="DepartmentDropDownList_SelectedIndexChanged">
+    <asp:DropDownList ID="DepartmentDropDownList" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="Department" DataValueField="Department">
         <asp:ListItem>Cardiology</asp:ListItem>
         <asp:ListItem>Intensive Care Unit</asp:ListItem>
         <asp:ListItem>Oncology</asp:ListItem>
@@ -30,7 +30,7 @@
     </asp:SqlDataSource>
 </p>
     <p>
-        <asp:Label ID="SelectDateLabel" runat="server" Text="Select Date Bellow"></asp:Label>
+        <asp:Label ID="SelectDateLabel" runat="server" Text="Select Date Below"></asp:Label>
 </p>
     <p>
         <asp:Label ID="ShowSelectedDateLabel" runat="server" Text="Label"></asp:Label>

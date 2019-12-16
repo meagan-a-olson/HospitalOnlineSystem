@@ -84,7 +84,52 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
 
         protected void DeletePatientAppointButton_Click(object sender, EventArgs e)
         {
-            
+            if (ShowPatientAppointments.SelectedRow != null)
+            {
+                AppointmentsTable delete = new AppointmentsTable();
+                string input = ShowPatientAppointments.SelectedValue.ToString();
+                int appointmentID = Convert.ToInt32(input);
+                delete = UtilitiesClass.createAppointment(appointmentID);
+                foreach(AppointmentsTable appointment in dbcon.AppointmentsTables)
+                {
+                    if(appointment.AppointmentID == delete.AppointmentID)
+                    {
+                        dbcon.AppointmentsTables.Remove(appointment);
+                    }
+                }
+                dbcon.SaveChanges();
+                ShowPatientAppointments.DataBind();
+                if (ShowPatientAppointments.Rows.Count == 0)
+                {
+                    DisplayNoAppointMessage.Text = "You have no appointments set up.";
+                    DisplayNoAppointMessage.Visible = true;
+                }
+            }
+        }
+
+        protected void DeleteDoctorAppointButton_Click(object sender, EventArgs e)
+        {
+            if (ShowDoctorAppointments.SelectedRow != null)
+            {
+                AppointmentsTable delete = new AppointmentsTable();
+                string input = ShowDoctorAppointments.SelectedValue.ToString();
+                int appointmentID = Convert.ToInt32(input);
+                delete = UtilitiesClass.createAppointment(appointmentID);
+                foreach (AppointmentsTable appointment in dbcon.AppointmentsTables)
+                {
+                    if (appointment.AppointmentID == delete.AppointmentID)
+                    {
+                        dbcon.AppointmentsTables.Remove(appointment);
+                    }
+                }
+                dbcon.SaveChanges();
+                ShowPatientAppointments.DataBind();
+                if (ShowDoctorAppointments.Rows.Count == 0)
+                {
+                    DisplayNoAppointMessage.Text = "You have no appointments set up.";
+                    DisplayNoAppointMessage.Visible = true;
+                }
+            }
         }
     }
 }

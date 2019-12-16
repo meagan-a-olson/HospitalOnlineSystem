@@ -8,11 +8,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <p class="auto-style1">
-    <br />
-    <asp:Label ID="ShowUserNameLabel" runat="server" Text="Label"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:Label ID="ShowPatientsDoctorLabel" runat="server" Text="Label"></asp:Label>
-</p>
+    </p>
 <p>
     <asp:Label ID="DepartmentNameLabel" runat="server" Text="Department: "></asp:Label>
     <asp:DropDownList ID="DepartmentDropDownList" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="Department" DataValueField="Department" OnSelectedIndexChanged="DepartmentDropDownList_SelectedIndexChanged">

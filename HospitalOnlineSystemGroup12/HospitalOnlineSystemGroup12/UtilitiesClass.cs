@@ -10,13 +10,14 @@ namespace HospitalOnlineSystemGroup12
     {
         private static HospitalDBEntities dbcon = new HospitalDBEntities();
 
+        // Creates Patient from login username
         public static PatientsTable getPatient(string username)
         {
             PatientsTable myPatient = null;
             username = username.Trim();
             foreach(PatientsTable patient in dbcon.PatientsTables)
             {
-                if (patient.UserLoginName.ToString().Trim() == username)
+                if (patient.UserLoginName.ToString().Trim() == username) // if input is equal to a username in database, create copy
                 {
                     myPatient = new PatientsTable();
                     myPatient.PatientID = patient.PatientID;
@@ -35,12 +36,13 @@ namespace HospitalOnlineSystemGroup12
             return myPatient;
         }
 
+        // Creates Doctor from loged in patient
         public static DoctorsTable getPatientsDoctor(PatientsTable patient)
         {
             DoctorsTable doctor = null;
             foreach(DoctorsTable doc in dbcon.DoctorsTables)
             {
-                if(doc.DoctorID == patient.DoctorID)
+                if(doc.DoctorID == patient.DoctorID) // if patient's DoctorID equals DoctorID in doctor table, create copy of doctor
                 {
                     doctor = new DoctorsTable();
                     doctor.FirstName = doc.FirstName;
@@ -56,13 +58,14 @@ namespace HospitalOnlineSystemGroup12
             return doctor;
         }
 
+        // Create Doctor from login username
         public static DoctorsTable getDoctor(string username)
         {
             DoctorsTable myDoctor = null;
             username = username.Trim();
             foreach (DoctorsTable doctor in dbcon.DoctorsTables)
             {
-                if (doctor.UserLoginName.ToString().Trim() == username)
+                if (doctor.UserLoginName.ToString().Trim() == username) // if input is equal to a username in database, create copy
                 {
                     myDoctor = new DoctorsTable();
                     myDoctor.DoctorID = doctor.DoctorID;
@@ -78,12 +81,13 @@ namespace HospitalOnlineSystemGroup12
             return myDoctor;
         }
 
+        // Creates appointment from appointmentID to delete
         public static AppointmentsTable createAppointment(int appointmentID)
         {
             AppointmentsTable deleteAppointment = new AppointmentsTable();
             foreach (AppointmentsTable appointment in dbcon.AppointmentsTables)
             {
-                if (appointment.AppointmentID == appointmentID)
+                if (appointment.AppointmentID == appointmentID) // if input is equal an appointmentID in database, copy it for deletion
                 {
                     deleteAppointment.AppointmentID = appointment.AppointmentID;
                     deleteAppointment.PatientID = appointment.PatientID;
@@ -98,6 +102,7 @@ namespace HospitalOnlineSystemGroup12
             return deleteAppointment;
         }
 
+        // Searches for a Message in database by messageID, and returns copy
         public static MessagesTable getMessageByID(int messageID)
         {
             MessagesTable result = null;

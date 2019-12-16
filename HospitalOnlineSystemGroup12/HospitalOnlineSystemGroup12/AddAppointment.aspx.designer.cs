@@ -78,15 +78,6 @@ namespace HospitalOnlineSystemGroup12
         protected global::System.Web.UI.WebControls.Label SelectDateLabel;
 
         /// <summary>
-        /// ShowSelectedDateLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ShowSelectedDateLabel;
-
-        /// <summary>
         /// SelectDateCalendar control.
         /// </summary>
         /// <remarks>

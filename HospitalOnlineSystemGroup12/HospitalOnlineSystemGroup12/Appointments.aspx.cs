@@ -17,15 +17,19 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Checks if user is patient or doctor, and creates object
+            // If Patient, do this
             if (Convert.ToInt32(Session["IsDoctor"]) == 0)
             {
+                // Doctor's appointments not visible to patient
                 ShowDoctorAppointments.Visible = false;
+                // Create Patient Object
                 myPatient = UtilitiesClass.getPatient(Session["LoginName"].ToString());
                 Session["AppointmentPatientID"] = myPatient.PatientID;
 
+                // Create a Doctor object that is paired to the patient
                 myDoctor = UtilitiesClass.getPatientsDoctor(myPatient);
 
+                // Adds users appointments to appointments list
                 allAppointments = dbcon.AppointmentsTables.ToList();
                 foreach (AppointmentsTable appointment in allAppointments)
                 {
@@ -35,21 +39,22 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
                     }
                 }
 
+                // If no appointments are set up, display message
                 if (userAppointments.Count == 0)
                 {
                     DisplayNoAppointMessage.Text = "You have no appointments set up yet.";
                     DeletePatientAppointButton.Visible = false;
                 }
-                else
+                else // display patients appointments
                 {
                     DisplayNoAppointMessage.Visible = false;
                     DeletePatientAppointButton.Visible = true;
                 }
 
             }
-            else
+            else // if Doctor, do this
             {
-                HyperLink1.Visible = false;
+                AddAppointmentHyperLink.Visible = false;
                 ShowDoctorAppointments.Visible = true;
                 ShowPatientAppointments.Visible = false;
 
@@ -86,31 +91,31 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
 
         protected void DeletePatientAppointButton_Click(object sender, EventArgs e)
         {
-            if (ShowPatientAppointments.SelectedRow != null)
+            if (ShowPatientAppointments.SelectedRow != null) // if appointment selected to delete on gridview, do this
             {
                 AppointmentsTable delete = new AppointmentsTable();
-                string input = ShowPatientAppointments.SelectedValue.ToString();
+                string input = ShowPatientAppointments.SelectedValue.ToString(); // gets AppointmentID of selected row
                 int appointmentID = Convert.ToInt32(input);
-                delete = UtilitiesClass.createAppointment(appointmentID);
-                foreach(AppointmentsTable appointment in dbcon.AppointmentsTables)
+                delete = UtilitiesClass.createAppointment(appointmentID); // creates copy of appointment object to delete
+                foreach (AppointmentsTable appointment in dbcon.AppointmentsTables) // check if appointment exists
                 {
-                    if(appointment.AppointmentID == delete.AppointmentID)
+                    if(appointment.AppointmentID == delete.AppointmentID) // if appointment exists, delete it
                     {
                         dbcon.AppointmentsTables.Remove(appointment);
                     }
                 }
-                dbcon.SaveChanges();
-                ShowPatientAppointments.DataBind();
-                if (ShowPatientAppointments.Rows.Count == 0)
+                dbcon.SaveChanges(); // save changes to database
+                ShowPatientAppointments.DataBind(); // update changes to grid view displaying patient appointment
+                if (ShowPatientAppointments.Rows.Count == 0) // if no appointments, display message
                 {
                     DisplayNoAppointMessage.Text = "You have no appointments set up.";
                     DisplayNoAppointMessage.Visible = true;
-                    DeletePatientAppointButton.Visible = false;
+                    DeletePatientAppointButton.Visible = false; // makes delete appointment button invisible
                 }
             }
         }
 
-        protected void DeleteDoctorAppointButton_Click(object sender, EventArgs e)
+        protected void DeleteDoctorAppointButton_Click(object sender, EventArgs e) // same logic for deleting patient appointments
         {
             if (ShowDoctorAppointments.SelectedRow != null)
             {

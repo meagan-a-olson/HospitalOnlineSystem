@@ -7,13 +7,22 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            font-size: x-large;
+            color: #006600;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
+        <span class="auto-style1"><strong>Hospital Online System
+        </strong></span>
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+        Group 12: Dylan Martie, Joshua Molden, and Meagan Olson
     </form>
 </body>
 </html>

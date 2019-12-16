@@ -38,6 +38,7 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
                 if (userAppointments.Count == 0)
                 {
                     DisplayNoAppointMessage.Text = "You have no appointments set up yet.";
+                    DeletePatientAppointButton.Visible = false;
                 }
                 else
                 {
@@ -68,6 +69,7 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
                 if (userAppointments.Count == 0)
                 {
                     DisplayNoAppointMessage.Text = "You have no appointments set up yet.";
+                    DeleteDoctorAppointButton.Visible = false;
                 }
                 else
                 {
@@ -103,11 +105,8 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
                 {
                     DisplayNoAppointMessage.Text = "You have no appointments set up.";
                     DisplayNoAppointMessage.Visible = true;
+                    DeletePatientAppointButton.Visible = false;
                 }
-            }
-            else
-            {
-
             }
         }
 
@@ -132,11 +131,8 @@ namespace HospitalOnlineSystemGroup12.Joshua_s_Work
                 {
                     DisplayNoAppointMessage.Text = "You have no appointments set up.";
                     DisplayNoAppointMessage.Visible = true;
+                    DeleteDoctorAppointButton.Visible = false;
                 }
-            }
-            else
-            {
-
             }
         }
     }
